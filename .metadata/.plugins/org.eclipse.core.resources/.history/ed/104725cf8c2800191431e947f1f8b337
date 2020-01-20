@@ -1,0 +1,54 @@
+package web.services;
+
+public class GetRefrigeratorInfoProxy implements web.services.GetRefrigeratorInfo {
+  private String _endpoint = null;
+  private web.services.GetRefrigeratorInfo getRefrigeratorInfo = null;
+  
+  public GetRefrigeratorInfoProxy() {
+    _initGetRefrigeratorInfoProxy();
+  }
+  
+  public GetRefrigeratorInfoProxy(String endpoint) {
+    _endpoint = endpoint;
+    _initGetRefrigeratorInfoProxy();
+  }
+  
+  private void _initGetRefrigeratorInfoProxy() {
+    try {
+      getRefrigeratorInfo = (new web.services.GetRefrigeratorInfoServiceLocator()).getgetRefrigeratorInfo();
+      if (getRefrigeratorInfo != null) {
+        if (_endpoint != null)
+          ((javax.xml.rpc.Stub)getRefrigeratorInfo)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+        else
+          _endpoint = (String)((javax.xml.rpc.Stub)getRefrigeratorInfo)._getProperty("javax.xml.rpc.service.endpoint.address");
+      }
+      
+    }
+    catch (javax.xml.rpc.ServiceException serviceException) {}
+  }
+  
+  public String getEndpoint() {
+    return _endpoint;
+  }
+  
+  public void setEndpoint(String endpoint) {
+    _endpoint = endpoint;
+    if (getRefrigeratorInfo != null)
+      ((javax.xml.rpc.Stub)getRefrigeratorInfo)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+    
+  }
+  
+  public web.services.GetRefrigeratorInfo getGetRefrigeratorInfo() {
+    if (getRefrigeratorInfo == null)
+      _initGetRefrigeratorInfoProxy();
+    return getRefrigeratorInfo;
+  }
+  
+  public model.RefrigeratorInfo getRefrigeratorInfoStatus(int refrigeratorinfoid) throws java.rmi.RemoteException{
+    if (getRefrigeratorInfo == null)
+      _initGetRefrigeratorInfoProxy();
+    return getRefrigeratorInfo.getRefrigeratorInfoStatus(refrigeratorinfoid);
+  }
+  
+  
+}

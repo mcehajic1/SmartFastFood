@@ -1,0 +1,44 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+ <form>
+ <br>
+<input style="width: 100px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Home" onclick="window.location.href=''" />
+<input style="width: 100px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Business" onclick="window.location.href='getBusinessForm'" />
+<input style="width: 100px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Employees" onclick="window.location.href='getEmployeeForm'" />
+<input style="width: 100px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Inventar" onclick="window.location.href='getInventarForm'" />
+<input style="width: 100px; position: absolute; right: 50; cursor: pointer; font-weight: bold; position: right; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Login" onclick="window.location.href='LoginForm'" />
+<br><br>
+<h3><center><b><div style="background-color:#FFF5EE"><span style="color:#003366">Welcome</span></div></b></center></h3>
+<br><br>
+<html>
+<body>        
+<p>
+<center><font style="text-shadow: 2px 2px #ff4d4d" size="525" face="calibri" color=#001a33><b>
+    Smart FastFood
+</b></center></font></p>
+</body>
+</html>
+</form>
+<br><br><br><br><br><br><br>
+
+<html>
+<head>
+<style>
+
+body
+{
+background-image: url("http://www.tokkoro.com/picsup/2961678-fries-tomatoes-food___mixed-wallpapers.jpg");
+background-repeat:no-repeat;
+background-position: center center;
+background-size: cover;
+}
+</style>
+</head>        
+                <h3><center><span style="background-color:#BC8F8F"><span style="color:#003366">Add Data </span></span></center></h3>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="add Order" onclick="window.location.href='addOrderForm'" /></center>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="go Back" onclick="window.location.href='LoginForm'" /></center>
+     
+        </ul>
+</body>
+</html>

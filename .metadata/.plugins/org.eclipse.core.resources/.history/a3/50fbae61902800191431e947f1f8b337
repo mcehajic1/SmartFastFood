@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.web" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.web" xmlns:intf="http://services.web" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.web" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <element name="getRoomInfoStatus">
+    <complexType>
+     <sequence>
+      <element name="roomid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRoomInfoStatusResponse">
+    <complexType>
+     <sequence>
+      <element name="getRoomInfoStatusReturn" type="tns1:RoomInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="RoomInfo">
+    <sequence>
+     <element name="gas" nillable="true" type="xsd:string"/>
+     <element name="humidity" nillable="true" type="xsd:string"/>
+     <element name="oxigenLevel" nillable="true" type="xsd:string"/>
+     <element name="roomId" type="xsd:int"/>
+     <element name="roomTemp" nillable="true" type="xsd:string"/>
+     <element name="roomid" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getRoomInfoStatusRequest">
+
+      <wsdl:part element="impl:getRoomInfoStatus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRoomInfoStatusResponse">
+
+      <wsdl:part element="impl:getRoomInfoStatusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="getRoomInfo">
+
+      <wsdl:operation name="getRoomInfoStatus">
+
+         <wsdl:input message="impl:getRoomInfoStatusRequest" name="getRoomInfoStatusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRoomInfoStatusResponse" name="getRoomInfoStatusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="getRoomInfoSoapBinding" type="impl:getRoomInfo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getRoomInfoStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRoomInfoStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRoomInfoStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="getRoomInfoService">
+
+      <wsdl:port binding="impl:getRoomInfoSoapBinding" name="getRoomInfo">
+
+         <wsdlsoap:address location="http://localhost:8080/SmartFastFood/services/getRoomInfo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

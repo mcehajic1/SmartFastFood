@@ -1,0 +1,219 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\User\Downloads\SSMK\apache-tomcat-7.0.64\wtpwebapps\SmartFastFood\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="getRefrigeratorInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="getRefrigeratorInfoStatus" qname="ns1:getRefrigeratorInfoStatus" returnQName="ns1:getRefrigeratorInfoStatusReturn" returnType="ns2:RefrigeratorInfo" soapAction="" xmlns:ns1="http://services.web" xmlns:ns2="http://model" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:refrigeratorinfoid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:parameter name="allowedMethods" value="getRefrigeratorInfoStatus"/>
+  <ns1:parameter name="wsdlPortType" value="getRefrigeratorInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="wsdlServicePort" value="getRefrigeratorInfo"/>
+  <ns1:parameter name="className" value="web.services.getRefrigeratorInfo"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getRefrigeratorInfoService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:RefrigeratorInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.RefrigeratorInfo" xmlns:ns3="http://model"/>
+ </ns1:service>
+ <ns1:service name="Item" provider="java:RPC" style="document" use="literal">
+  <ns1:parameter name="allowedMethods" value="*"/>
+  <ns1:parameter name="wsdlPortType" value="Item"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlServicePort" value="Item"/>
+  <ns1:parameter name="className" value="web.services.Item"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="ItemService"/>
+ </ns1:service>
+ <ns1:service name="getFoodStuff" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getFoodStuffInfo" qname="ns4:getFoodStuffInfo" returnQName="ns4:getFoodStuffInfoReturn" returnType="ns5:FoodStuff" soapAction="" xmlns:ns4="http://services.web" xmlns:ns5="http://model">
+   <ns1:parameter qname="ns4:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="getFoodStuff"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="className" value="web.services.getFoodStuff"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="getFoodStuffInfo"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getFoodStuffService"/>
+  <ns1:parameter name="wsdlPortType" value="getFoodStuff"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:FoodStuff" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.FoodStuff" xmlns:ns6="http://model"/>
+ </ns1:service>
+ <ns1:service name="getFridgeInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getFridgeInfoStatus" qname="ns7:getFridgeInfoStatus" returnQName="ns7:getFridgeInfoStatusReturn" returnType="ns8:FridgeInfo" soapAction="" xmlns:ns7="http://services.web" xmlns:ns8="http://model">
+   <ns1:parameter qname="ns7:fridgeinfoid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getFridgeInfoStatus"/>
+  <ns1:parameter name="wsdlPortType" value="getFridgeInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="wsdlServicePort" value="getFridgeInfo"/>
+  <ns1:parameter name="className" value="web.services.getFridgeInfo"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getFridgeInfoService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:FridgeInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.FridgeInfo" xmlns:ns9="http://model"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="getOrder" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getOrderInfo" qname="ns10:getOrderInfo" returnQName="ns10:getOrderInfoReturn" returnType="ns11:Order" soapAction="" xmlns:ns10="http://services.web" xmlns:ns11="http://model">
+   <ns1:parameter qname="ns10:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getOrderInfo"/>
+  <ns1:parameter name="wsdlPortType" value="getOrder"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="wsdlServicePort" value="getOrder"/>
+  <ns1:parameter name="className" value="web.services.getOrder"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getOrderService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:Order" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.Order" xmlns:ns12="http://model"/>
+ </ns1:service>
+ <ns1:service name="addOrder" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createOrder" qname="ns13:createOrder" soapAction="" xmlns:ns13="http://services.web">
+   <ns1:parameter qname="ns13:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns13:TypeOfOrder" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns13:Purchaser" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns13:Contact" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns13:Note" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createOrder"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="addOrder"/>
+  <ns1:parameter name="className" value="web.services.addOrder"/>
+  <ns1:parameter name="wsdlServicePort" value="addOrder"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="addOrderService"/>
+ </ns1:service>
+ <ns1:service name="addFridgeInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createFridgeInfo" qname="ns14:createFridgeInfo" soapAction="" xmlns:ns14="http://services.web">
+   <ns1:parameter qname="ns14:FridgeInfoId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns14:Temperature" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns14:WorkingTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="addFridgeInfo"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="className" value="web.services.addFridgeInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="createFridgeInfo"/>
+  <ns1:parameter name="wsdlPortType" value="addFridgeInfo"/>
+  <ns1:parameter name="wsdlServiceElement" value="addFridgeInfoService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+ </ns1:service>
+ <ns1:service name="addFoodStuff" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createFoodStuff" qname="ns15:createFoodStuff" soapAction="" xmlns:ns15="http://services.web">
+   <ns1:parameter qname="ns15:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns15:Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns15:Type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns15:Amount" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createFoodStuff"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="addFoodStuff"/>
+  <ns1:parameter name="className" value="web.services.addFoodStuff"/>
+  <ns1:parameter name="wsdlServicePort" value="addFoodStuff"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="addFoodStuffService"/>
+ </ns1:service>
+ <ns1:service name="addRefrigeratorInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createRefrigeratorInfo" qname="ns16:createRefrigeratorInfo" soapAction="" xmlns:ns16="http://services.web">
+   <ns1:parameter qname="ns16:RefrigeratorInfoId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns16:Temperature" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns16:WorkingTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="addRefrigeratorInfo"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="className" value="web.services.addRefrigeratorInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="createRefrigeratorInfo"/>
+  <ns1:parameter name="wsdlPortType" value="addRefrigeratorInfo"/>
+  <ns1:parameter name="wsdlServiceElement" value="addRefrigeratorInfoService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+ </ns1:service>
+ <ns1:service name="addRoomInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createRoomInfo" qname="ns17:createRoomInfo" soapAction="" xmlns:ns17="http://services.web">
+   <ns1:parameter qname="ns17:RoomId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns17:RoomTemp" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns17:Humidity" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns17:Gas" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns17:OxigenLevel" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="addRoomInfo"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="className" value="web.services.addRoomInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="createRoomInfo"/>
+  <ns1:parameter name="wsdlServiceElement" value="addRoomInfoService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlPortType" value="addRoomInfo"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+ </ns1:service>
+ <ns1:service name="getRoomInfo" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getRoomInfoStatus" qname="ns18:getRoomInfoStatus" returnQName="ns18:getRoomInfoStatusReturn" returnType="ns19:RoomInfo" soapAction="" xmlns:ns18="http://services.web" xmlns:ns19="http://model">
+   <ns1:parameter qname="ns18:roomid" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getRoomInfoStatus"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="getRoomInfo"/>
+  <ns1:parameter name="className" value="web.services.getRoomInfo"/>
+  <ns1:parameter name="wsdlServicePort" value="getRoomInfo"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getRoomInfoService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:RoomInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.RoomInfo" xmlns:ns20="http://model"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

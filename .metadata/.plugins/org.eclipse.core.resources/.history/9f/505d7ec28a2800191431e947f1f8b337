@@ -1,0 +1,38 @@
+package web.services;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import model.Order;
+import dao.DBConnection;
+
+public class getOrder {
+
+        public Order getOrderInfo(int Id) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.Orders WHERE ID=?");
+                        stmt.setInt(1, Id);
+                        
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        //System.out.println("Pronadjeno je");
+                        while (rs.next()) {
+                                
+                                Order order = new Order();
+                                order.setId(rs.getInt("id"));
+                                order.setTypeOfOrder(rs.getString("typeoforder"));
+                                order.setPurchaser(rs.getString("purchaser"));
+                                order.setContact(rs.getString("contact"));
+
+                                //System.out.println("Vraca se navedeno: "+ inventar.toString());
+                                return order;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+                
+}

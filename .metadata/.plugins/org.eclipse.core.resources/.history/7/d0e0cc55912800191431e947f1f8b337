@@ -1,0 +1,38 @@
+package web.services;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import model.RoomInfo;
+import dao.DBConnection;
+
+public class getRoomInfo {
+
+        public RoomInfo getRoomInfoStatus(int roomid) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.RoomInfos WHERE RoomID=?");
+                        stmt.setInt(1,roomid);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                RoomInfo room2=new RoomInfo();
+                                //System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                                room2.setRoomId(rs.getInt(roomid));
+                                room2.setRoomTemp(rs.getString("roomtemp"));
+                                room2.setHumidity(rs.getString("humidity"));
+                                room2.setGas(rs.getString("gas"));
+                                room2.setOxigenLevel(rs.getString("oxigenlevel"));
+                                
+                                return room2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+}

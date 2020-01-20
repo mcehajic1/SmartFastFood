@@ -1,0 +1,108 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\User\Downloads\SSMK\apache-tomcat-7.0.64\wtpwebapps\SmartFastFood\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="Item" provider="java:RPC" style="document" use="literal">
+  <ns1:parameter name="allowedMethods" value="*"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Item"/>
+  <ns1:parameter name="className" value="web.services.Item"/>
+  <ns1:parameter name="wsdlServicePort" value="Item"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="ItemService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="getOrder" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="getOrderInfo" qname="ns1:getOrderInfo" returnQName="ns1:getOrderInfoReturn" returnType="ns2:Order" soapAction="" xmlns:ns1="http://services.web" xmlns:ns2="http://model" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:parameter name="allowedMethods" value="getOrderInfo"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="getOrder"/>
+  <ns1:parameter name="className" value="web.services.getOrder"/>
+  <ns1:parameter name="wsdlServicePort" value="getOrder"/>
+  <ns1:parameter name="schemaQualified" value="http://model,http://services.web"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="getOrderService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:Order" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.Order" xmlns:ns3="http://model"/>
+ </ns1:service>
+ <ns1:service name="addOrder" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createOrder" qname="ns4:createOrder" soapAction="" xmlns:ns4="http://services.web">
+   <ns1:parameter qname="ns4:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:TypeOfOrder" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:Purchaser" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:Contact" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:Note" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createOrder"/>
+  <ns1:parameter name="wsdlPortType" value="addOrder"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="wsdlServicePort" value="addOrder"/>
+  <ns1:parameter name="className" value="web.services.addOrder"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="addOrderService"/>
+ </ns1:service>
+ <ns1:service name="addFoodStuff" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createFoodStuff" qname="ns5:createFoodStuff" soapAction="" xmlns:ns5="http://services.web">
+   <ns1:parameter qname="ns5:Id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:Type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:Amount" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createFoodStuff"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="addFoodStuff"/>
+  <ns1:parameter name="className" value="web.services.addFoodStuff"/>
+  <ns1:parameter name="wsdlServicePort" value="addFoodStuff"/>
+  <ns1:parameter name="schemaQualified" value="http://services.web"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.web"/>
+  <ns1:parameter name="wsdlServiceElement" value="addFoodStuffService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

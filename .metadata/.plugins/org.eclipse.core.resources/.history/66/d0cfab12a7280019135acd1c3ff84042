@@ -1,0 +1,55 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<form>
+<input style="width: 100px; position: absolute; right: 50; cursor: pointer; font-weight: bold; position: right; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Go Back" onclick="goBack()" />
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</form>
+ 
+<html>
+<head>
+<style>
+body
+{
+background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/background-office-10.jpg");
+background-repeat:no-repeat;
+background-position: center center;
+background-size: cover;
+}
+
+</style>
+<title>Get Order</title>
+</head>
+
+<body>
+<br>
+        <h3><center><b><div style="background-color:#FFF5EE"><span style="color:#003366">Order Info</span></div></b></center></h3>        
+</div> </html>
+
+<br><br>
+                
+<html>
+<body>
+        <form:form method="post" action="getOrder" modelAttribute="order">
+                <div>
+                        <center><span style="background-color:#FFF5EE; color:#003366"><b>Type of Order: </b></span><form:input path="Typeoforder" placeholder="Type Of Order" /></center>
+                </div>
+                <div>
+                        <center><span style="background-color:#FFF5EE; color:#003366"><b>Purchaser: </b></span><form:input path="Purchaser" placeholder="Purchaser" /></center>
+                </div>
+                <div>
+                        <center><span style="background-color:#FFF5EE; color:#003366"><b>Contact: </b></span><form:input path="Contact" placeholder="Contact" /></center>
+                </div>
+                </div>
+                	    <center><span style="background-color:#FFF5EE; color:#003366"><b>Note: </b></span><form:input path="Note" placeholder="Note" /></center>
+        				<center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="go Back" onclick="window.location.href='LoginForm'" /></center>
+        </form:form>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        
+</body>
+</html>

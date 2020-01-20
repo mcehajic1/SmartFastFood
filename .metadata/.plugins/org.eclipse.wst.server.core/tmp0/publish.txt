@@ -1,0 +1,6 @@
+#Tomcat publish data
+#Wed Feb 06 12:32:27 CET 2019
+org.eclipse.jst.jee.server\:SmartFastFood=C\:\\Users\\User\\Downloads\\SSMK\\apache-tomcat-7.0.64\\wtpwebapps\\SmartFastFood
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\User\\Desktop\\PROJEKAT\\SmartFastFood\\WebContent\\WEB-INF\\lib\\spring-web-4.2.4.RELEASE.jar=C\:\\Users\\User\\Downloads\\SSMK\\apache-tomcat-7.0.64\\wtpwebapps\\SmartFastFood\\WEB-INF\\lib\\spring-web-4.2.4.RELEASE.jar
+org.eclipse.jst.jee.server\:SmartFastFoodClient=C\:\\Users\\User\\Downloads\\SSMK\\apache-tomcat-7.0.64\\wtpwebapps\\SmartFastFoodClient
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\User\\Desktop\\PROJEKAT\\SmartFastFood\\WebContent\\WEB-INF\\lib\\spring-web-4.2.4.RELEASE-sources.jar=C\:\\Users\\User\\Downloads\\SSMK\\apache-tomcat-7.0.64\\wtpwebapps\\SmartFastFood\\WEB-INF\\lib\\spring-web-4.2.4.RELEASE-sources.jar

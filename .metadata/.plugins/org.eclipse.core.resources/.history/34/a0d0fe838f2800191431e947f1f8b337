@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.web" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.web" xmlns:intf="http://services.web" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.web" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createRoomInfo">
+    <complexType>
+     <sequence>
+      <element name="RoomId" type="xsd:int"/>
+      <element name="RoomTemp" type="xsd:string"/>
+      <element name="Humidity" type="xsd:string"/>
+      <element name="Gas" type="xsd:string"/>
+      <element name="OxigenLevel" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createRoomInfoResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createRoomInfoRequest">
+
+      <wsdl:part element="impl:createRoomInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createRoomInfoResponse">
+
+      <wsdl:part element="impl:createRoomInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="addRoomInfo">
+
+      <wsdl:operation name="createRoomInfo">
+
+         <wsdl:input message="impl:createRoomInfoRequest" name="createRoomInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createRoomInfoResponse" name="createRoomInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="addRoomInfoSoapBinding" type="impl:addRoomInfo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createRoomInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createRoomInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createRoomInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="addRoomInfoService">
+
+      <wsdl:port binding="impl:addRoomInfoSoapBinding" name="addRoomInfo">
+
+         <wsdlsoap:address location="http://localhost:8080/SmartFastFood/services/addRoomInfo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

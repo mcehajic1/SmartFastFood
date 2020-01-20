@@ -1,0 +1,53 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<form>
+<input style="width: 100px; position: absolute; right: 50; cursor: pointer; font-weight: bold; position: right; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Go Back" onclick="goBack()" />
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</form>
+ 
+<html>
+<head>
+<style>
+body
+{
+background-image: url("http://www.pptbackgrounds.org/uploads/fast-food-powerpoint-backgrounds.jpg");
+background-repeat:no-repeat;
+background-position: center center;
+background-size: cover;
+}
+
+</style>
+<title>Order</title>
+</head>
+
+<body>
+<br>
+        <h3><center><b><div style="background-color:#FFF5EE"><span style="color:#003366">Enter specific ID to retrieve order details</span></div></b></center></h3>        
+</div> </html>
+                
+<html>
+<body>        
+
+
+<br>
+<br>
+<form:form method="post" action="getOrder" modelAttribute="Order">
+<div>
+<center><form:input path="id" placeholder="Enter Order ID" /></center>
+</div>
+<div>
+<br>
+<center><input style="width: 200px;cursor: pointer; font-weight: bold; position: right; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="submit" value="Get Order" onclick="window.location.href='getOrder'" /></center>
+</div>
+<center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="go Back" onclick="window.location.href='LoginForm'" /></center>
+<br><br><br><br><br><br><br><br><br><br>
+
+</form:form>
+</body>
+</html>

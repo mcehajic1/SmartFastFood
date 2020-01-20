@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from addRoomInfoService WSDL service -->
+
+  <service name="addRoomInfo" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.web"/>
+      <parameter name="wsdlServiceElement" value="addRoomInfoService"/>
+      <parameter name="schemaQualified" value="http://services.web"/>
+      <parameter name="wsdlServicePort" value="addRoomInfo"/>
+      <parameter name="className" value="web.services.addRoomInfo"/>
+      <parameter name="wsdlPortType" value="addRoomInfo"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.web" name="createRoomInfo" qname="operNS:createRoomInfo" soapAction="">
+        <parameter xmlns:pns="http://services.web" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:RoomId" type="tns:int"/>
+        <parameter xmlns:pns="http://services.web" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:RoomTemp" type="tns:string"/>
+        <parameter xmlns:pns="http://services.web" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Humidity" type="tns:string"/>
+        <parameter xmlns:pns="http://services.web" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Gas" type="tns:string"/>
+        <parameter xmlns:pns="http://services.web" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:OxigenLevel" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="createRoomInfo"/>
+
+  </service>
+</deployment>

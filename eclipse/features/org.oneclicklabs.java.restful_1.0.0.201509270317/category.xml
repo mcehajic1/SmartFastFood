@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.oneclicklabs.java.restful_1.0.0.qualifier.jar" id="org.oneclicklabs.java.restful" version="1.0.0.qualifier">
+      <category name="Restful Plugin"/>
+   </feature>
+   <category-def name="Restful Plugin" label="Restful Plugin"/>
+</site>

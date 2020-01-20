@@ -1,0 +1,37 @@
+package web.services;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import model.FridgeInfo;
+import dao.DBConnection;
+
+public class getFridgeInfo {
+
+        public FridgeInfo getFridgeInfoStatus(int fridgeinfoid) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.FridgeInfos WHERE FridgeID=?");
+                        stmt.setInt(1, fridgeinfoid);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                FridgeInfo fridge2=new FridgeInfo();
+                                // System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                        
+                                fridge2.setFridgeInfoId(rs.getInt(fridgeinfoid));
+                                fridge2.setTemperature(rs.getString("temperature"));
+                                fridge2.setWorkingTime(rs.getString("workingtime"));
+                                
+                                return fridge2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+}

@@ -1,0 +1,58 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<br>
+
+<form>
+<input style="width: 100px; position: absolute; right: 50; cursor: pointer; font-weight: bold; position: right; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 100%;" type="button" value="Logout" onclick="window.location.href='/SSMTKLAB6'" />
+</form>
+ 
+
+
+<html>
+<head>
+<style>
+body
+{
+background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2017/10/17/1113328/c8f1c635f8f2120003ba560b97f4d38a-700.jpg"");
+background-repeat:no-repeat;
+background-position: center center;
+background-size: cover;
+}
+
+</style>
+<title>Administrator Home</title>
+</head>
+
+<body>
+<br>
+        <h4><center><b><div style="background-color:#FFF5EE"><span style="color:#003366">Administrator access</span></div></b></center></h4>        
+</div>
+                
+<html>
+<body>        
+<p>
+<center><font size="50" face="calibri" color=#003366><b>
+    Smart FastFood
+</b></center></font></p>
+</body>
+</html>
+                <h3><center><span style="background-color:#BC8F8F"><span style="color:#003366">Add Data</span></span></center></h3>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Add FoodStuff" onclick="window.location.href='addFoodStuffForm'" /></center>
+
+
+                <h3><center><span style="background-color:#BC8F8F"><span style="color:#003366">Retrieve Data </span></span></center></h3>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Get Order" onclick="window.location.href='getOrderForm'" /></center>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Get FoodStuff" onclick="window.location.href='getFoodStuffForm'" /></center>
+
+
+                <h3><center><span style="background-color:#BC8F8F"><span style="color:#003366">Retrieve Sensors Info </span></span></center></h3>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Show Room Sensor Info" onclick="window.location.href='getRoomInfoForm'" /></center>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Show Fridge Sensor Info" onclick="window.location.href='getFridgeInfoForm'" /></center>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="Show Refrigerator Sensor Info" onclick="window.location.href='getRefrigeratorInfoForm" /></center>
+                <center><input style="width: 200px; cursor: pointer; font-weight: bold; background: #E9967A; color: #003366; border-radius: 5px; border: 5px solid #BC8F8F; font-size: 90%;" type="button" value="go Back" onclick="window.location.href='LoginForm'" /></center>
+
+        </ul>
+</body>
+</html>

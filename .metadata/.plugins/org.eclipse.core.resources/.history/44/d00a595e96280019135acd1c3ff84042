@@ -1,0 +1,344 @@
+package web.services;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import model.FoodStuff;
+import model.Login;
+import model.Order;
+import model.RefrigeratorInfo;
+import model.RoomInfo;
+import model.FridgeInfo;
+import dao.DBConnection;
+
+public class Item{
+
+public class addFoodStuff {
+        
+        
+        public void createFoodStuff(int Id, String Name, String Type, String Amount) {
+                String sql = "INSERT INTO smartdb.FoodStuffs"
+                + "(id, name, type, amount) VALUES (?, ?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, Id);
+                        stmt.setString(2, Name);
+                        stmt.setString(3, Type);
+                        stmt.setString(4, Amount);
+
+
+                        stmt.executeUpdate();
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+}
+
+public class addFridgeInfo {
+        
+        public void createFridgeInfo(int FridgeInfoId, String Temperature, String WorkingTime) {
+                String sql = "INSERT INTO smartdb.FridgeInfos "
+                                + "(fridgeinfoid, temperature, workingtime) VALUES (?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, FridgeInfoId);
+                        stmt.setString(2, Temperature);
+                        stmt.setString(3, WorkingTime);
+
+                        stmt.executeUpdate();
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+
+}
+public class addLogin {
+        
+        public void createLogin(int LoginId, String UserName, String Password) {
+                String sql = "INSERT INTO smartdb.Logins "
+                                + "(loginid, username, password) VALUES (?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, LoginId);
+                        stmt.setString(2, UserName);
+                        stmt.setString(3, Password);
+                        stmt.executeUpdate();
+                        
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+}
+public class addOrder {
+        
+        
+        public void createOrder(int Id, String TypeOfOrder, String Purchaser, String Contact, String Note) {
+                String sql ="INSERT INTO smartdb.Orders "
+                + "(id, typeoforder, purchaser, contact, note) VALUES (?, ?, ?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, Id);
+                        stmt.setString(2, TypeOfOrder);
+                        stmt.setString(3, Purchaser);
+                        stmt.setString(4, Contact);
+                        stmt.setString(5, Note);
+                        
+                        stmt.executeUpdate();
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+}
+public class addRefrigeratorInfo {
+
+        public void createRefrigeratorInfo(int RefrigeratorInfoId, String Temperature, String WorkingTime) {
+                String sql = "INSERT INTO smartdb.RefrigeratorInfos "
+                                + "(refrigeratorinfoid, temperature, workingtime) VALUES (?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, RefrigeratorInfoId);
+                        stmt.setString(2, Temperature);
+                        stmt.setString(3, WorkingTime);
+
+                        stmt.executeUpdate();
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+
+}
+public class addRoomInfo {
+        
+        public void createRoomInfo(int RoomId, String RoomTemp, String Humidity, String Gas, String OxigenLevel) {
+                String sql = "INSERT INTO smartdb.RoomInfos "
+                                + "(roomid, roomtemp, humidity, gas, oxigenlevel) VALUES (?, ?, ?, ?, ?)";
+                Connection conn;
+                try {
+                        conn = DBConnection.getConnection();
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        
+                        stmt.setInt(1, RoomId);
+                        stmt.setString(2, RoomTemp);
+                        stmt.setString(3, Humidity);
+                        stmt.setString(4, Gas);
+                        stmt.setString(5, OxigenLevel);
+                        
+
+                        stmt.executeUpdate();
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
+        }
+
+}
+public class getFoodStuff {
+
+      public FoodStuff getFoodStuffInfo(int Id) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.FoodStuffs WHERE ID=?");
+                        stmt.setInt(1,Id);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        //System.out.println("Pronadjeno je");
+                        while (rs.next()) {
+                                
+                                FoodStuff mb2=new FoodStuff();
+                                
+                                mb2.setId(rs.getInt("id"));
+                                mb2.setName(rs.getString("name"));
+                                mb2.setType(rs.getString("type"));
+                                mb2.setAmount(rs.getString("amount"));
+        
+                                return mb2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+                
+}
+public class getFridgeInfo {
+
+        public FridgeInfo getFridgeInfoStatus(int fridgeinfoid) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.FridgeInfos WHERE FridgeID=?");
+                        stmt.setInt(1, fridgeinfoid);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                FridgeInfo fridge2=new FridgeInfo();
+                                // System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                        
+                                fridge2.setFridgeInfoId(rs.getInt(fridgeinfoid));
+                                fridge2.setTemperature(rs.getString("temperature"));
+                                fridge2.setWorkingTime(rs.getString("workingtime"));
+                                
+                                return fridge2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+}
+public class getLogin {
+        
+        public Login getLoginInfo(String username){
+                
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.Logins WHERE username=?");
+                        stmt.setString(1, username);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                Login login=new Login();
+                                //System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                                
+                                if(rs.getString("password").equals(null)){
+                                        
+                                        login.setUsername("");
+                                        login.setPassword("");
+                                }
+                                else{
+                                login.setUsername(username);
+                                login.setPassword(rs.getString("password"));
+                                }
+                                
+                                return login;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+}
+public class getOrder {
+
+        public Order getOrderInfo(int Id) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.Orders WHERE ID=?");
+                        stmt.setInt(1, Id);
+                        
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        //System.out.println("Pronadjeno je");
+                        while (rs.next()) {
+                                
+                                Order order = new Order();
+                                order.setId(rs.getInt("id"));
+                                order.setTypeOfOrder(rs.getString("typeoforder"));
+                                order.setPurchaser(rs.getString("purchaser"));
+                                order.setContact(rs.getString("contact"));
+
+                                //System.out.println("Vraca se navedeno: "+ inventar.toString());
+                                return order;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+                
+}
+public class getRefrigeratorInfo {
+
+        public RefrigeratorInfo getRefrigeratorInfoStatus(int refrigeratorid) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.RefrigeratorInfos WHERE RefrigeratorID=?");
+                        stmt.setInt(1, refrigeratorid);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                RefrigeratorInfo refrigerator2=new RefrigeratorInfo();
+                                // System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                                refrigerator2.setRefrigeratorId(refrigeratorid);
+                                refrigerator2.setTemperature(rs.getString("temperature"));
+                                refrigerator2.setWorkingTime(rs.getString("workingtime"));
+                                
+                                return refrigerator2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+        
+}
+public class getRoomInfo {
+
+        public RoomInfo getRoomInfoStatus(int roomid) {
+                try {
+                        Connection conn = DBConnection.getConnection();
+                        //System.out.println("Uspostavljena konekcija s bazom podataka");
+                        PreparedStatement stmt = conn
+                                        .prepareStatement("SELECT * FROM smartdb.RoomInfo WHERE RoomID=?");
+                        stmt.setInt(1,roomid);
+                        //System.out.println("Pocetak pretrage");
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while (rs.next()) {
+                                
+                                RoomInfo room2=new RoomInfo();
+                                //System.out.println("Pronadjeno je:"+rs.getString("Temperature"));
+                                
+                                room2.setRoomId(rs.getInt("roomid"));
+                                room2.setRoomTemp(rs.getString("roomtemp"));
+                                room2.setHumidity(rs.getString("humidity"));
+                                room2.setGas(rs.getString("gas"));
+                                room2.setOxigenLevel(rs.getString("oxigenlevel"));
+                                
+                                return room2;
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+                return null;
+        }
+}
+}

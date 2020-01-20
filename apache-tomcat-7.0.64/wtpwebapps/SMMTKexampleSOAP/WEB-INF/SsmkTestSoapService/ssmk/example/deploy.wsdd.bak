@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SsmkTestSoapService WSDL service -->
+
+  <service name="SsmkTestSoap" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://example.ssmk"/>
+      <parameter name="wsdlServiceElement" value="SsmkTestSoapService"/>
+      <parameter name="schemaQualified" value="http://example.ssmk"/>
+      <parameter name="wsdlServicePort" value="SsmkTestSoap"/>
+      <parameter name="className" value="ssmk.example.SsmkTestSoapSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SsmkTestSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getCustomer" qname="operNS:getCustomer" xmlns:operNS="http://example.ssmk" returnQName="retNS:getCustomerReturn" xmlns:retNS="http://example.ssmk" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:CustomerID" xmlns:pns="http://example.ssmk" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getCustomer"/>
+
+  </service>
+</deployment>

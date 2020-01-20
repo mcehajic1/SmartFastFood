@@ -1,0 +1,198 @@
+package controller;
+
+import web.services.MessageHandler;
+import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPMessage;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.stereotype.Controller;
+
+import model.Login;
+import model.Order;
+import model.FoodStuff;
+import model.FridgeInfo;
+import model.RefrigeratorInfo;
+import model.RoomInfo;
+
+@Controller
+	public class MainController {
+	@RequestMapping(value = "/")
+	public ModelAndView Home(HttpServletResponse response) throws
+	IOException {
+	ModelAndView modelandview = new ModelAndView("Home");
+	return modelandview;
+     }
+	
+
+	@RequestMapping(value = "/addOrderForm")
+	public ModelAndView addOrderForm(@ModelAttribute Order order,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("addOrderForm");
+		
+		return modelandview;
+	}
+
+	@RequestMapping(value = "/addOrder")
+	public String addOrder(@ModelAttribute Order order)
+			throws IOException, SOAPException {
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest3(order.getId(),order.getTypeOfOrder(),order.getPurchaser(), order.getContact(), order.getNote());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/addOrder ");
+        return "redirect:/addOrderForm";
+	}
+
+	@RequestMapping(value = "/addFoodStuffForm")
+	
+	public ModelAndView addFoodStuffForm(@ModelAttribute FoodStuff foodstuff,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("addFoodStuffForm");
+		return modelandview;
+	}
+	@RequestMapping(value = "/addFoodStuff")
+	public String addFoodStuff(@ModelAttribute FoodStuff foodstuff) throws IOException, SOAPException {
+		
+	    MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest(foodstuff.getId(),foodstuff.getName(),foodstuff.getType(), foodstuff.getAmount());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/addFoodStuff");
+        return "redirect:/addFoodStuffForm";
+	}
+	
+	
+	@RequestMapping(value = "/getOrderForm")
+	public ModelAndView getOrderForm(@ModelAttribute Order order,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("getOrderForm");
+		return modelandview;
+	}
+
+	@RequestMapping(value = "/getOrder")
+	public ModelAndView getOrder(@ModelAttribute Order order) throws Exception {
+		
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest4(order.getId());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/getOrder");
+        Order response1=MessageHandler.parseSOAPResponse2(response);
+        
+        ModelAndView modelandview=new ModelAndView("getOrder");
+        modelandview.addObject(response1);
+        return modelandview;
+	}
+	
+	@RequestMapping(value = "/getFoodStuffForm")
+	public ModelAndView getFoodStuff(@ModelAttribute FoodStuff foodstuff,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("getFoodStuffForm");
+		return modelandview;
+	}
+
+	@RequestMapping(value = "/getFoodStuff")
+	public ModelAndView getFoodStuff(@ModelAttribute FoodStuff foodstuff) throws Exception {
+		
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest2(foodstuff.getId());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/getFoodStuff");
+        FoodStuff response1=MessageHandler.parseSOAPResponse(response);
+        
+        ModelAndView modelandview=new ModelAndView("getFoodStuff");
+        modelandview.addObject(response1);
+        return modelandview;
+	}
+	
+	
+	@RequestMapping(value = "/getRoomInfoForm")
+	public ModelAndView getRoomInfoForm(@ModelAttribute RoomInfo roominfo,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("getRoomInfoForm");
+		return modelandview;
+	}
+	
+	@RequestMapping(value = "/getRoomInfo")
+	public ModelAndView getRoomInfo(@ModelAttribute RoomInfo roominfo) throws Exception {
+		
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest5(roominfo.getRoomId());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/getRoomInfo");
+        RoomInfo response1=MessageHandler.parseSOAPResponse5(response);
+        
+        ModelAndView modelandview=new ModelAndView("getRoomInfo");
+        modelandview.addObject(response1);
+        
+        return modelandview;
+	}
+	
+	@RequestMapping(value = "/getFridgeInfoForm")
+	public ModelAndView getFridgeInfoForm(@ModelAttribute FridgeInfo fridgeinfo,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("getFridgeInfoForm");
+		return modelandview;
+	}
+	
+	@RequestMapping(value = "/getFridgeInfo")
+	public ModelAndView getFridgeInfo(@ModelAttribute FridgeInfo fridgeinfo) throws Exception {
+		
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest6(fridgeinfo.getFridgeInfoId());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/getFridgeInfo");
+        FridgeInfo response1=MessageHandler.parseSOAPResponse3(response);
+        ModelAndView modelandview=new ModelAndView("getFridgeInfo");
+        modelandview.addObject(response1);
+        return modelandview;
+	}
+	
+	
+	@RequestMapping(value = "/getRefrigeratorInfoForm")
+	public ModelAndView getRefrigeratorInfoForm(@ModelAttribute RefrigeratorInfo refrigeratorinfo,
+			HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("getRefrigeratorInfoForm");
+		return modelandview;
+	}
+	
+	@RequestMapping(value = "/getRefrigeratorInfo")
+	public ModelAndView getRefrigeratorInfo(@ModelAttribute RefrigeratorInfo refrigeratorinfo) throws Exception {
+		
+		MessageHandler handler=new MessageHandler();
+        SOAPMessage request=handler.createSOAPRequest7(refrigeratorinfo.getRefrigeratorId());
+        SOAPMessage response=handler.sendSOAPRequest(request,"http://localhost:8080/SmartFastFood/services/getRefrigeratorInfo");
+        RefrigeratorInfo response1=MessageHandler.parseSOAPResponse4(response);
+        ModelAndView modelandview=new ModelAndView("getRefrigeratorInfo");
+        modelandview.addObject(response1);
+        return modelandview;
+	}
+	
+	@RequestMapping(value = "/LoginForm")
+	public ModelAndView LoginForm(@ModelAttribute Login userlog,
+			HttpServletResponse response) throws IOException {
+	ModelAndView modelandview = new ModelAndView("LoginForm");
+		return modelandview;
+}
+
+@ModelAttribute("userlog")
+public Login userlog(){
+  return new Login();
+}	
+	
+@RequestMapping(value = "/Login")
+public String Login(@ModelAttribute Login userlog)
+		throws IOException, SOAPException {
+	if (userlog.getUsername().equals("administrator") && userlog.getPassword().equals("12345"))
+    return "redirect:/AdminHome"; 
+	else
+		return "redirect:/Login";
+}
+
+@RequestMapping(value = "/AdminHome")
+	public ModelAndView adminHome(HttpServletResponse response) throws IOException {
+		ModelAndView modelandview = new ModelAndView("AdminHome");
+		return modelandview;
+	}
+
+@RequestMapping(value = "/Home")
+public ModelAndView Home(HttpServletResponse response) throws IOException {
+	ModelAndView modelandview = new ModelAndView("Home");
+	return modelandview;
+}
+
+}

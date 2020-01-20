@@ -1,0 +1,27 @@
+INDEX VERSION 1.126
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1380601394.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4056161989.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4034163813.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4072906359.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4183405567.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3355187531.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2093072662.index
+\SmartFastFood\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1237281526.index
+\SmartFastFood\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2006852654.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2654558109.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1971404191.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\983604728.index
+\SmartFastFoodClient\src
+C:\Users\User\Desktop\PROJEKAT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1887071410.index
+\SmartFastFoodClient\src
